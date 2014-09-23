@@ -24,33 +24,66 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row nav-bar">
-        <a href="/" class="logo"><img style="margin-top:-23px;"src="{{ url_for('static', filename='img/nav_banner.png') }}"></a>
-        <!--<img src="{{ url_for('static', filename='img/nav_banner.png') }}">-->
-        <a href="/" class="nav-title">Home</a>
-        <!-- <img src="{{ url_for('static', filename='img/nav_home.png') }}"> -->
-        <a href="/find-provider" class="nav-title">Find a Resource</a>
-        <a href="/settings" class="nav-title">User Profile</a>
-        <a href="/about" class="nav-title">About</a>
-        <a href="/get-involved" class="nav-title">Get Involved</a>
-        <a href="/login" class="nav-title">Login</a>
-
+      <div class="row purple-pattern-background">
+        <div class="col-xs-5 hidden-sm hidden-md hidden-lg" style="margin:10px 0px;">
+          <img width="100%" style="max-height: 100px; max-width: 100px;" src="static/img/rad_logo.png">
+        </div>
+        <div class="col-xs-7 hidden-sm hidden-md hidden-lg" style="font-weight:bold; margin:10px 0px; padding-left:10px; border-left: .25em dashed purple;">
+          This is where we would have a nice blurb about what RAD is, who should use it, and what they might use it for. Also, this is a good spot for a short version of our mission statement!
+        </div>
+        <div class="hidden-xs col-sm-8 col-sm-offset-4" style="text-align:center; font-size: 5em;">
+          Welcome
+        </div>
+        <div class="clearfix visible-xs-block hidden-sm hidden-md hidden-lg"></div>
+        <div class="col-xs-12" style=" padding: 10px; border-top: 2px solid #AFEEEE; border-bottom: 2px solid #AFEEEE; text-align: center;">
+          <form action="">
+          <strong>Search Rad</strong> <input type="text" name="search" value=""> <input type="submit" value="Search">
+          </form>
+        </div>
+        <div class="clearfix visible-xs-block hidden-sm"></div>
+        <div id="static-header-logo" class="hidden-xs">
+            <img style="max-height:150px; max-width:150px;" src="static/img/rad_logo.png">
+        </div>
       </div>
-    {% block flashes %}
-        {% for message in get_flashed_messages() %}
-        <div class="alert alert-info" role="alert">{{ message }}</div>
-        {% endfor %}
-    {% endblock %}
+      <div class="row">
+        <div class="col-sm-3">
+              <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+                <li class="active"><a href="/" class="nav-title">Home</a></li>
+                <li><a href="/find-provider" class="nav-title">Find a Resource</a></li>
+                <li><a href="/settings" class="nav-title">User Profile</a></li>
+                <li><a href="/about" class="nav-title">About</a></li>
+                <li><a href="/get-involved" class="nav-title">Get Involved</a></li>
+                <li><a href="/login" class="nav-title">Login</a></li>
+              </ul>
+              <p>{% if logged_in() %}{{ current_user.username }}{% elif not logged_in() %} Not Logged In {% endif %}</p>
+            <!--<a href="/" class="logo"><img style="margin-top:23px;"src="{{ url_for('static', filename='img/nav_banner.png') }}"></a>-->
+            <!--<img src="{{ url_for('static', filename='img/nav_banner.png') }}">-->
+            <!-- <a href="/" class="nav-title">Home</a>
+             <img src="{{ url_for('static', filename='img/nav_home.png') }}"> 
+            <a href="/find-provider" class="nav-title">Find a Resource</a>
+            <a href="/settings" class="nav-title">User Profile</a>
+            <a href="/about" class="nav-title">About</a>
+            <a href="/get-involved" class="nav-title">Get Involved</a>
+            <a href="/login" class="nav-title">Login</a>-->
 
-    {% block content %}{% endblock %}
-    </div>
+        </div>
+        <div class="xs-hidden col-sm-9">
+          {% block flashes %}
+              {% for message in get_flashed_messages() %}
+              <div class="alert alert-info" role="alert">{{ message }}</div>
+              {% endfor %}
+              {% endblock %}
+
+            {% block content %}{% endblock %}
 
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
-    <div class="{% block container_class %}container container-remedy{% endblock %}">
+    <div class="{% block container_class %}container container-remedy{% endblock %}"></div>
     <a class="pink-label contact" href="">Contact Us</a>
 
    	{% block scripts %}{% endblock %}
+        </div>
+      </div>
   </body>
 </html>

@@ -20,6 +20,24 @@ a {
 	color: #fff;
 }
 
+input {
+	color: black;
+}
+input[type="text"]{
+
+}
+input[type="submit"]{
+	background-color: #428bca;
+	border-radius: 5px;
+	padding: 5px;
+	font-size: bold;
+}
+
+.purple-pattern-background {
+	background: url('../img/purple_bkgd.png') repeat scroll 0% 0% / 200% auto transparent;
+}
+
+
 .nav-bar {
 	margin-top: -10px; 
 	padding:0;
@@ -159,4 +177,30 @@ a {
   width: 400px;
 }
 
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
 
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 768px) { 
+div#static-header-logo {
+    position: absolute;
+    background: url('static/img/rad_logo.png');
+    left: 5px;
+    top: 5px;
+    max-height: 150px;
+    max-width: 150px;
+}
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px;) { 
+
+ }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+
+ }
